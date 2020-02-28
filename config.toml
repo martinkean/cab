@@ -24,8 +24,8 @@ theme="bootstrap-bp-hugo-theme"
     priority = 0.5
 
 [permalinks]
-    posts = "/:year/:month/:slug/"
-    post = "/:year/:month/:slug/"
+    posts = "/post/:slug/"
+    post = "/post/:slug/"
     pages = "/:slug/"
     page = "/:slug/"
 
