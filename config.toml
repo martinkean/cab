@@ -1,5 +1,5 @@
 ignoreFiles = ["content/portfolio/\\.*","content/product/\\.*","content/sketch/\\.*"]
-baseURL = "/"
+baseURL = "https://wonderful-franklin-fd4262.netlify.com/"
 title = "Critical Analysis Broadcasting"
 # author = "Steve Francia"
 # copyright = "Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved."
