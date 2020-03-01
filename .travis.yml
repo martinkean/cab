@@ -9,3 +9,8 @@ script:
 branches:
  only:
  - master
+
+deploy:
+ local_dir: public
+ on:
+  branch: master
