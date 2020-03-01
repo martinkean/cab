@@ -1,0 +1,68 @@
+{{ define "main" }}
+
+    <main aria-role="main">
+      <header class="homepage-header">
+        <h1>{{.Title}}</h1>
+        {{ with .Params.subtitle }}
+        <span class="subtitle">{{.}}</span>
+        {{ end }}
+      </header>
+      <div class="homepage-content">
+        <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
+          
+           <div class="container">
+           <div class="row d-flex">
+           <h1  class="display-4">Current playlist, December 2019</h1>
+            <table class="table col-8">
+                <thead class="thead-light">
+                  <tr>
+                  <th scope="col">Song</th>
+                  <th scope="col">Artist</th>
+                  <th scope="col">Year</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {{ $url := "/data/Playlist20194CSV.csv" }}
+                {{ $sep := "," }}
+                {{ range $i, $r := getCSV $sep $url }}
+                  <tr>
+                    <td>{{ index $r 0 }}</td>
+                    <td>{{ index $r 1 }}</td>
+                    <td>{{ index $r 2 }}</td>
+                  </tr>
+                {{ end }}
+                </tbody>
+            </table>
+        </div>
+        </div>
+        
+      </div>
+      <div>
+        {{ range first 10 .Site.RegularPages }}
+            {{ .Render "summary"}}
+        {{ end }}
+      </div>
+    </main>
+
+<!--
+<div class="container mt-3 mb-3">
+    {{ $paginator := .Paginate ( where .Site.RegularPages.ByPublishDate.Reverse "Type" "!=" "page") }}
+    {{ if .Site.Params.startPageColumns }}
+        <div class="card-columns">
+            {{ range $paginator.Pages }}
+                {{- partial "content_index.html" . -}}
+            {{ end }}
+        </div>
+    {{ else }}
+        {{ range $paginator.Pages }}
+            <div class="mb-3">
+                {{- partial "content_index.html" . -}}
+            </div>
+        {{ end }}
+    {{ end }}
+
+    {{ template "_internal/pagination.html" . }}
+</div>
+-->
+
+{{ end }}
